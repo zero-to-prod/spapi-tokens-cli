@@ -29,6 +29,6 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            -t "davidsmith3/:slug" \
+            -t "davidsmith3/spapi-tokens-cli" \
             --push \
             .
