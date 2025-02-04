@@ -24,12 +24,11 @@ class RdtCommand extends Command
         $Options = RdtOptions::from($input->getOptions());
 
         $response = SpapiTokens::restrictedDataToken(
-            'https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken',
             $Args->access_token,
             $Args->path,
             $Args->dataElements,
             $Args->targetApplication,
-            $Options->user_agent
+            $Options->user_agent,
         );
 
         if ($response['info']['http_code'] !== 200) {
