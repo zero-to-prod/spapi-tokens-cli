@@ -38,13 +38,12 @@ class RdtFromTokenCommand extends Command
             return Command::SUCCESS;
         }
 
-        $rdt_response = SpapiTokens::restrictedDataToken(
-            'https://sellingpartnerapi-na.amazon.com/tokens/2021-03-01/restrictedDataToken',
+        $rdt_response = SpapiTokens::createRestrictedDataToken(
             $response['response']['access_token'],
             $Args->path,
             $Args->dataElements,
             $Args->targetApplication,
-            $Options->user_agent
+            user_agent: $Options->user_agent,
         );
 
         if ($rdt_response['info']['http_code'] !== 200) {
