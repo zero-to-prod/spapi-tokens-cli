@@ -13,7 +13,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin \
     --filename=composer
 
-RUN composer install
+RUN composer update --no-dev --prefer-dist --optimize-autoloader --no-interaction
 
 RUN chmod +x /app/bin/spapi-tokens-cli
 
