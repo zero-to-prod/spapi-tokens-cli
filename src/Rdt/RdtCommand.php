@@ -23,13 +23,11 @@ class RdtCommand extends Command
         $Args = RdtArguments::from($input->getArguments());
         $Options = RdtOptions::from($input->getOptions());
 
-        $response = SpapiTokens::createRestrictedDataToken(
+        $response = SpapiTokens::from(
             $Args->access_token,
-            $Args->path,
-            $Args->dataElements,
             $Args->targetApplication,
             user_agent: $Options->user_agent,
-        );
+        )->createRestrictedDataToken($Args->path, $Args->dataElements);
 
         if ($response['info']['http_code'] !== 200) {
             $output->writeln(json_encode($response, JSON_PRETTY_PRINT));
