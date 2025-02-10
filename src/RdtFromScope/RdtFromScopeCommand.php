@@ -24,13 +24,11 @@ class RdtFromScopeCommand extends Command
         $Args = RdtFromScopeArguments::from($input->getArguments());
         $Options = RdtFromScopeOptions::from($input->getOptions());
 
-        $response = SpapiLwa::clientCredentials(
-            'https://api.amazon.com/auth/o2/token',
-            $Args->scope,
+        $response = SpapiLwa::from(
             $Args->client_id,
             $Args->client_secret,
-            $Options->user_agent
-        );
+            user_agent: $Options->user_agent
+        )->clientCredentials($Args->scope);
 
         if ($response['info']['http_code'] !== 200) {
             $output->writeln(json_encode($response, JSON_PRETTY_PRINT));
@@ -38,13 +36,12 @@ class RdtFromScopeCommand extends Command
             return Command::SUCCESS;
         }
 
-        $rdt_response = SpapiTokens::createRestrictedDataToken(
+        $rdt_response = SpapiTokens::from(
             $response['response']['access_token'],
-            $Args->path,
-            $Args->dataElements,
             $Args->targetApplication,
-            user_agent: $Options->user_agent
-        );
+            user_agent: $Options->user_agent,
+        )->createRestrictedDataToken($Args->path, $Args->dataElements);
+
         if ($rdt_response['info']['http_code'] !== 200) {
             $output->writeln(json_encode($rdt_response, JSON_PRETTY_PRINT));
 
