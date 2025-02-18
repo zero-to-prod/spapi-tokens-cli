@@ -11,12 +11,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Zerotoprod\SpapiLwa\SpapiLwa;
 use Zerotoprod\SpapiTokens\SpapiTokens;
 
+/**
+ * @link https://github.com/zero-to-prod/spapi-tokens-cli
+ */
 #[AsCommand(
     name: RdtFromScopeCommand::signature,
     description: 'Get a Restricted Data Token (RDT) for restricted resources from a scope.'
 )]
 class RdtFromScopeCommand extends Command
 {
+    /**
+     * @link https://github.com/zero-to-prod/spapi-tokens-cli
+     */
     public const signature = 'spapi-tokens-cli:rdt-from-scope';
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -70,6 +76,9 @@ class RdtFromScopeCommand extends Command
         return Command::SUCCESS;
     }
 
+    /**
+     * @link https://github.com/zero-to-prod/spapi-tokens-cli
+     */
     public function configure(): void
     {
         $this->addArgument(RdtFromScopeArguments::scope, InputArgument::REQUIRED, 'The LWA refresh token');

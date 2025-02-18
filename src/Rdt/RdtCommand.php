@@ -10,12 +10,18 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Zerotoprod\SpapiTokens\SpapiTokens;
 
+/**
+ * @link https://github.com/zero-to-prod/spapi-tokens-cli
+ */
 #[AsCommand(
     name: RdtCommand::signature,
     description: 'Get a Restricted Data Token (RDT) for restricted resources.'
 )]
 class RdtCommand extends Command
 {
+    /**
+     * @link https://github.com/zero-to-prod/spapi-tokens-cli
+     */
     public const signature = 'spapi-tokens-cli:rdt';
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -57,6 +63,9 @@ class RdtCommand extends Command
         return Command::SUCCESS;
     }
 
+    /**
+     * @link https://github.com/zero-to-prod/spapi-tokens-cli
+     */
     public function configure(): void
     {
         $this->addArgument(RdtArguments::access_token, InputArgument::REQUIRED, 'The access_token to get a restricted resource.');
