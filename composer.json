@@ -36,7 +36,7 @@
     "ext-json": "*",
     "symfony/console": "^7.2",
     "zero-to-prod/data-model": "^81.9",
-    "zero-to-prod/spapi-tokens": "^2.0",
+    "zero-to-prod/spapi-tokens": "^2.0 || ^3.0",
     "zero-to-prod/spapi-lwa": "^2.0"
   },
   "autoload": {
