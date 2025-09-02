@@ -46,7 +46,8 @@
     }
   },
   "bin": [
-    "bin/spapi-tokens-cli"
+    "bin/spapi-tokens-cli",
+    "bin/zero-to-prod-spapi-tokens-cli"
   ],
   "require-dev": {
     "phpunit/phpunit": "<12.0"
